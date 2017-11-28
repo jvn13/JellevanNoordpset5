@@ -52,7 +52,7 @@ public class MenuFragment extends ListFragment {
                         if (jArray != null) {
                             for (int i=0;i<jArray.length();i++){
                                 JSONObject item = jArray.optJSONObject(i);
-                                itemsArrayList.add(new Dish(item.optInt("id"), item.optInt("price"), item.optString("name")));
+                                itemsArrayList.add(new Dish(item.optInt("id"), item.optInt("price"), item.optString("name"),item.optString("image_url")));
                             }
                         }
                         adapter.notifyDataSetChanged();
@@ -78,7 +78,7 @@ public class MenuFragment extends ListFragment {
             db.updateItem(dish.getId());
             MainActivity.orderBadge.onOrderSetChanged(getContext());
         } else {
-            db.addItem(dish.getId(), dish.getName(), dish.getPrice());
+            db.addItem(dish.getId(), dish.getName(), dish.getPrice(), dish.getImage());
             MainActivity.orderBadge.onOrderSetChanged(getContext());
         }
         // create snackbar to display item has been added

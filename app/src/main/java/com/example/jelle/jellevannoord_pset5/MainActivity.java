@@ -22,10 +22,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         FragmentManager fm = getSupportFragmentManager();
-        CategoriesFragment fragment = new CategoriesFragment();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.fragment_container, fragment, "categories");
-        ft.commit();
+        if(null == savedInstanceState) {
+            CategoriesFragment fragment = new CategoriesFragment();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.fragment_container, fragment, "categories");
+            ft.commit();
+        }
     }
 
     @Override

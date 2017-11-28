@@ -24,7 +24,7 @@ public class RestoDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS orders ( _id INTEGER PRIMARY KEY, name TEXT, price INTEGER, amount INTEGER)");
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS orders ( _id INTEGER PRIMARY KEY, name TEXT, price INTEGER, url TEXT, amount INTEGER)");
     }
 
     @Override
@@ -47,12 +47,13 @@ public class RestoDatabase extends SQLiteOpenHelper {
         return false;
     }
 
-    public void addItem(int id, String name, int price) {
+    public void addItem(int id, String name, int price, String url) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("_id", id);
         contentValues.put("name", name);
         contentValues.put("price",price);
+        contentValues.put("url",url);
         contentValues.put("amount",1);
         db.insert("orders", null, contentValues);
     }
