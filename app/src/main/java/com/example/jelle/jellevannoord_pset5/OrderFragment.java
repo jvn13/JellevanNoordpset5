@@ -101,6 +101,7 @@ public class OrderFragment extends DialogFragment implements View.OnClickListene
         });
         // Add the request to the RequestQueue.
         queue.add(jsObjRequest);
+        totalPrice.setText("€ " + String.valueOf(db.getTotalPrice()));
     }
 
     private class listLongClickListener implements AdapterView.OnItemLongClickListener {
