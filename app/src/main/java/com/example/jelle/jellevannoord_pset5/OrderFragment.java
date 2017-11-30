@@ -2,8 +2,6 @@ package com.example.jelle.jellevannoord_pset5;
 
 
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -34,6 +32,7 @@ public class OrderFragment extends DialogFragment implements View.OnClickListene
     ListView orderList;
     Button cancelButton;
     Button orderButton;
+    TextView totalPrice;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,6 +44,7 @@ public class OrderFragment extends DialogFragment implements View.OnClickListene
         cancelButton.setOnClickListener(this);
         orderButton = view.findViewById(R.id.order_button);
         orderButton.setOnClickListener(this);
+        totalPrice = view.findViewById(R.id.totalPrice);
         return view;
     }
 
@@ -54,6 +54,7 @@ public class OrderFragment extends DialogFragment implements View.OnClickListene
         db = RestoDatabase.getInstance(getContext());
         adapter = new RestoAdapter(getContext(), db.selectAll(), 0);
         orderList.setAdapter(adapter);
+        totalPrice.setText("€ " + String.valueOf(db.getTotalPrice()));
     }
 
     public void updateData() {

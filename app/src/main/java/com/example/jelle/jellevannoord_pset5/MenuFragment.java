@@ -3,6 +3,7 @@ package com.example.jelle.jellevannoord_pset5;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
@@ -29,12 +30,14 @@ public class MenuFragment extends ListFragment {
 
     private ArrayList<Dish> itemsArrayList = new ArrayList();
     private ArrayAdapter adapter;
+    View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu, container, false);
+        view = inflater.inflate(R.layout.fragment_menu, container, false);
+        return view;
     }
 
     @Override
@@ -81,7 +84,7 @@ public class MenuFragment extends ListFragment {
             db.addItem(dish.getId(), dish.getName(), dish.getPrice(), dish.getImage());
             MainActivity.orderBadge.onOrderSetChanged(getContext());
         }
-        // create snackbar to display item has been added
+        Snackbar.make(view,"A(n) " + dish.getName() + " is added to your order", Snackbar.LENGTH_LONG).show();
     }
 
 
