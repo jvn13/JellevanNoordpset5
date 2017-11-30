@@ -1,4 +1,4 @@
-[![BCH compliance](https://bettercodehub.com/edge/badge/jvn13/JellevanNoordpset4?branch=master)](https://bettercodehub.com/)
+[![BCH compliance](https://bettercodehub.com/edge/badge/jvn13/JellevanNoordpset5?branch=master)](https://bettercodehub.com/)
 # Restaurant 2.0 app
 
 ## About
